@@ -70,4 +70,12 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         return node;
     }
 
+    public Key min() {
+        return min(root).key;
+    }
+
+    private Node min(Node node) {
+        if (node.left == null) return node;
+        return min(node.left);
+    }
 }

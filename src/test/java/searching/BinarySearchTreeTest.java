@@ -77,4 +77,16 @@ class BinarySearchTreeTest {
 
         assertEquals(RIGHT_VALUE, bst.get(RIGHT_KEY));
     }
+
+    @Test
+    void shouldReturnMinKeyInBST() {
+        BinarySearchTree<Integer, String> bst = new BinarySearchTree<>();
+        bst.put(23, "value1");
+        bst.put(15, "value2");
+        bst.put(56, "value3");
+        bst.put(7, "value4");
+        bst.put(71, "value5");
+
+        assertEquals(7, bst.min());
+    }
 }
