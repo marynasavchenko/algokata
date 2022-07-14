@@ -5,6 +5,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     protected Node root;
 
     protected class Node {
+
         protected Key key;
         protected Value value;
         protected Node right;
@@ -16,6 +17,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
             this.value = value;
             this.subtreeNodeNumber = subtreeNodeNumber;
         }
+
     }
 
     public int size() {
@@ -78,4 +80,15 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         if (node.left == null) return node;
         return min(node.left);
     }
+
+    public Key max() {
+        return max(root).key;
+    }
+
+    private Node max(Node node) {
+        if (node.right == null) return node;
+        return max(node.right);
+    }
+
+
 }

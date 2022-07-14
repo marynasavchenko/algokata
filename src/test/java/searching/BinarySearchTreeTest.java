@@ -89,4 +89,15 @@ class BinarySearchTreeTest {
 
         assertEquals(7, bst.min());
     }
+
+    @Test
+    void shouldReturnMaxKey() {
+        BinarySearchTree<Integer, String> bst = new BinarySearchTree<>();
+        bst.put(23, "value1");
+        bst.put(15, "value2");
+        bst.put(56, "value3");
+        bst.put(7, "value4");
+
+        assertEquals(56, bst.max());
+    }
 }
