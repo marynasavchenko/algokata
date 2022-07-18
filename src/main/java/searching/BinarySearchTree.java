@@ -90,5 +90,40 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         return max(node.right);
     }
 
+    public Key floor(Key key) {
+        Node node = floor(root, key);
+        if (node == null) return null;
+        return node.key;
+    }
+
+    private Node floor(Node node, Key key) {
+        if (node == null) return null;
+        int keyCmp = key.compareTo(node.key);
+        if (keyCmp == 0) {
+            return node;
+        }
+        if (keyCmp < 0) return floor(node.left, key);
+        Node rightNode = floor(node.right, key);
+        if (rightNode != null) return rightNode;
+        else return node;
+    }
+
+    public Key ceiling(Key key) {
+        Node node = ceiling(root, key);
+        if (node == null) return null;
+        return node.key;
+    }
+
+    private Node ceiling(Node node, Key key) {
+        if (node == null) return null;
+        int keyCmp = key.compareTo(node.key);
+        if (keyCmp == 0) {
+            return node;
+        }
+        if (keyCmp > 0) return ceiling(node.right, key);
+        Node leftNode = ceiling(node.left, key);
+        if (leftNode != null) return leftNode;
+        else return node;
+    }
 
 }

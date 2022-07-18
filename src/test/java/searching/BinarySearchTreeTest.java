@@ -100,4 +100,38 @@ class BinarySearchTreeTest {
 
         assertEquals(56, bst.max());
     }
+
+    @Test
+    void shouldReturnFloorWhenGivenKeyIsEqual() {
+        BinarySearchTree<Integer, String> bst = new BinarySearchTree<>();
+        bst.put(23, "value1");
+        bst.put(14, "value2");
+        bst.put(32, "value3");
+
+        assertEquals(14, bst.floor(14));
+    }
+
+    @Test
+    void shouldReturnFloorWhenGivenKeyIsLarger() {
+        BinarySearchTree<Integer, String> bst = new BinarySearchTree<>();
+        bst.put(23, "value1");
+        bst.put(14, "value2");
+        bst.put(32, "value3");
+        bst.put(36, "value4");
+        bst.put(33, "value5");
+
+        assertEquals(33, bst.floor(34));
+    }
+
+    @Test
+    void shouldReturnCeilingWhenGivenKeyIsSmaller() {
+        BinarySearchTree<Integer, String> bst = new BinarySearchTree<>();
+        bst.put(23, "value1");
+        bst.put(14, "value2");
+        bst.put(32, "value3");
+        bst.put(36, "value4");
+        bst.put(33, "value5");
+
+        assertEquals(36, bst.ceiling(34));
+    }
 }
