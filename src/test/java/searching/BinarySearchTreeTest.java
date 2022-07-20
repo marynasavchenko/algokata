@@ -134,4 +134,49 @@ class BinarySearchTreeTest {
 
         assertEquals(36, bst.ceiling(34));
     }
+
+    @Test
+    void shouldDeleteMinElement() {
+        BinarySearchTree<Integer, String> bst = new BinarySearchTree<>();
+        bst.put(23, "value1");
+        bst.put(14, "value2");
+        bst.put(32, "value3");
+
+        bst.deleteMin();
+
+        assertNull(bst.get(14));
+    }
+
+    @Test
+    void shouldDeleteElementByGivenKey() {
+        BinarySearchTree<Integer, String> bst = new BinarySearchTree<>();
+        bst.put(23, "value1");
+        bst.put(14, "value2");
+        bst.put(32, "value3");
+        bst.put(36, "value4");
+        bst.put(33, "value5");
+
+        bst.delete(32);
+
+        assertNull(bst.get(32));
+    }
+
+    @Test
+    void successorShouldBeTheMinKeyInRightSubtree() {
+        BinarySearchTree<Integer, String> bst = new BinarySearchTree<>();
+        bst.put(23, "value1");
+        bst.put(14, "value2");
+        bst.put(32, "value3");
+        bst.put(36, "value4");
+        bst.put(28, "value5");
+        bst.put(33, "value6");
+        bst.put(45, "value7");
+        bst.put(61, "value8");
+        bst.put(41, "value9");
+        bst.put(50, "value10");
+
+        bst.delete(36);
+
+        assertEquals(41, bst.root.right.right.key);
+    }
 }
