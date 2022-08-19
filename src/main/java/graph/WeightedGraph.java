@@ -25,7 +25,7 @@ public class WeightedGraph {
         connections[otherVertex].add(edge);
     }
 
-    public List<Edge> getConnectionsFor(int vertex) {
+    public List<Edge> getEdgesFor(int vertex) {
         return connections[vertex];
     }
 
