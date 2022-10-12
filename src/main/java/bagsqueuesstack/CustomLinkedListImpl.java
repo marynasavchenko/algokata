@@ -19,6 +19,13 @@ public class CustomLinkedListImpl<E> implements Iterable<E> {
         size++;
     }
 
+    public E removeFromHead() {
+        Node<E> first = head;
+        head = head.next;
+        size--;
+        return first.value;
+    }
+
     public int size() {
         return size;
     }
@@ -45,12 +52,35 @@ public class CustomLinkedListImpl<E> implements Iterable<E> {
         public E next() {
             if (hasNext()) {
                 E value = currentNode.value;
-                currentNode =currentNode.next;
+                currentNode = currentNode.next;
                 nodeCount++;
                 return value;
             } else {
                 throw new NoSuchElementException();
             }
         }
+    }
+
+    public Node<E> reverseList() {
+        Node<E> first = head;
+        Node<E> reversed = null;
+        while (first != null) {
+            Node<E> next = first.next;
+            first.next = reversed;
+            reversed = first;
+            first = next;
+        }
+
+        head = reversed;
+        return head;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder list = new StringBuilder();
+        for (E e : this) {
+            list.append(" ").append(e);
+        }
+        return list.toString();
     }
 }
